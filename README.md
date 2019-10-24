@@ -60,15 +60,15 @@ Copyright 2019. ZHing. All rights received.
 ## 1.1. 准备工作环境
 本文所述实现，基于Unity 2019.3集成的DXR。因此需要对Unity工程进行基本的设置。
 
-![avatar](images/0_SetupDX12.png)
+![avatar](images/0_SetupDX12.PNG)
 
 设置Graphics API为Direct3D12为第一项
 
 ## 1.2. 利用SPR调用DXR
 因为使用了SPR和SIMD数学库，因此需要至少导入如下Unity Package。
 
-![avatar](images/0_ImportPackage1.png)
-![avatar](images/0_ImportPackage2.png)
+![avatar](images/0_ImportPackage1.PNG)
+![avatar](images/0_ImportPackage2.PNG)
 
 ## 1.3. 本文所使用SRP框架介绍
 本文所有例程都基于一个最简SRP框架实习，详细请参看工程源代码，这里只做简单介绍。
