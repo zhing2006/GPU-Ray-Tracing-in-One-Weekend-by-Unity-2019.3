@@ -772,7 +772,7 @@ cmd.DispatchRays(_shader, "CameraRayGenShader", (uint) outputTarget.rt.width,
 ```
 **_FocusCameraLeftBottomCorner**将Camera的Film Plane的左下角的World Space坐标传送到RayTrace Shader。
 
-**_FocusCameraRight**, **_FocusCameraUp**将Camera在World Space中的右矢量和上适量传送到RayTrace Shader。
+**_FocusCameraRight**, **_FocusCameraUp**将Camera在World Space中的右矢量和上矢量传送到RayTrace Shader。
 
 **_FocusCameraSize**将Camera的Film Plane在World Space中的大小传送到RayTrace Shader。
 
