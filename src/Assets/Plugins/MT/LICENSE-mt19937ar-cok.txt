@@ -1,0 +1,8 @@
+This is a Mersenne Twister pseudorandom number generator
+with period 2^19937-1 with improved initialization scheme,
+modified on 2002/2/10 by Takuji Nishimura and Makoto Matsumoto. 
+This is a faster version by taking Shawn Cokus's optimization, 
+Matthe Bellew's simplification, Isaku Wada's real version.
+-------
+Copyright (C) 1997 - 2002, Makoto Matsumoto and Takuji Nishimura,
+All rights reserved.

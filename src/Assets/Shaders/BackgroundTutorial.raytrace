@@ -1,0 +1,43 @@
+﻿#pragma max_recursion_depth 1
+
+#define CBUFFER_START(name) cbuffer name {
+#define CBUFFER_END };
+
+CBUFFER_START(CameraBuffer)
+float4x4 _InvCameraViewProj;
+float3 _WorldSpaceCameraPos;
+float _CameraFarDistance;
+CBUFFER_END
+
+RWTexture2D<float4> _OutputTarget;
+
+inline void GenerateCameraRay(out float3 origin, out float3 direction)
+{
+  float2 xy = DispatchRaysIndex().xy + 0.5f; // center in the middle of the pixel.
+  float2 screenPos = xy / DispatchRaysDimensions().xy * 2.0f - 1.0f;
+
+  // Un project the pixel coordinate into a ray.
+  float4 world = mul(_InvCameraViewProj, float4(screenPos, 0, 1));
+
+  world.xyz /= world.w;
+  origin = _WorldSpaceCameraPos.xyz;
+  direction = normalize(world.xyz - origin);
+}
+
+inline float3 Color(float3 origin, float3 direction)
+{
+  float t = 0.5f * (direction.y + 1.0f);
+  return (1.0f - t) * float3(1.0f, 1.0f, 1.0f) + t * float3(0.5f, 0.7f, 1.0f);
+}
+
+[shader("raygeneration")]
+void BackgroundRayGenShader()
+{
+  const uint2 dispatchIdx = DispatchRaysIndex().xy;
+
+  float3 origin;
+  float3 direction;
+  GenerateCameraRay(origin, direction);
+
+  _OutputTarget[dispatchIdx] = float4(Color(origin, direction), 1.0f);
+}
