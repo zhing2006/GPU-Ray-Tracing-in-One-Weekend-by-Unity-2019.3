@@ -458,7 +458,6 @@ struct RayIntersection
   float4 color;
 };
 
-[shader("raygeneration")]
 inline void GenerateCameraRayWithOffset(out float3 origin, out float3 direction, float2 offset)
 {
   float2 xy = DispatchRaysIndex().xy + offset;
@@ -472,6 +471,7 @@ inline void GenerateCameraRayWithOffset(out float3 origin, out float3 direction,
   direction = normalize(world.xyz - origin);
 }
 
+[shader("raygeneration")]
 void AntialiasingRayGenShader()
 {
   const uint2 dispatchIdx = DispatchRaysIndex().xy;
