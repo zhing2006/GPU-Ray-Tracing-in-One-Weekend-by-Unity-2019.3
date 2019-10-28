@@ -117,7 +117,7 @@
           // Make reflection ray.
           RayDesc rayDescriptor;
           rayDescriptor.Origin = positionWS + 0.001f * normalWS;
-          rayDescriptor.Direction = normalize(normalWS + GetRandomInUnitSphere(rayIntersection.PRNGStates));
+          rayDescriptor.Direction = normalize(normalWS + GetRandomOnUnitSphere(rayIntersection.PRNGStates));
           rayDescriptor.TMin = 1e-5f;
           rayDescriptor.TMax = _CameraFarDistance;
 

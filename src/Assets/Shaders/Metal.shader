@@ -123,7 +123,7 @@ Shader "Tutorial/Metal"
             reflectDir = direction;
           RayDesc rayDescriptor;
           rayDescriptor.Origin = positionWS + 0.001f * reflectDir;
-          rayDescriptor.Direction = reflectDir + _Fuzz * GetRandomInUnitSphere(rayIntersection.PRNGStates);
+          rayDescriptor.Direction = reflectDir + _Fuzz * GetRandomOnUnitSphere(rayIntersection.PRNGStates);
           rayDescriptor.TMin = 1e-5f;
           rayDescriptor.TMax = _CameraFarDistance;
 

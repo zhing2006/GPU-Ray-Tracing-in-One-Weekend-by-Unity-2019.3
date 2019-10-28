@@ -613,7 +613,7 @@ void ClosestHitShader(inout RayIntersection rayIntersection : SV_RayPayload, Att
     // Make reflection ray.
     RayDesc rayDescriptor;
     rayDescriptor.Origin = positionWS + 0.001f * normalWS;
-    rayDescriptor.Direction = normalize(normalWS + GetRandomInUnitSphere(rayIntersection.PRNGStates));
+    rayDescriptor.Direction = normalize(normalWS + GetRandomOnUnitSphere(rayIntersection.PRNGStates));
     rayDescriptor.TMin = 1e-5f;
     rayDescriptor.TMax = _CameraFarDistance;
 
@@ -636,7 +636,7 @@ void ClosestHitShader(inout RayIntersection rayIntersection : SV_RayPayload, Att
 
 当*rayIntersection.remainingDepth*大于0时将使用原文中的方法进行Diffuse计算，再次调用*TraceRay*进行Ray Tracing递归计算。
 
-**GetRandomInUnitSphere**返回单位球体上均匀分布的随机向量。
+**GetRandomOnUnitSphere**返回单位球体上均匀分布的随机向量。
 
 ## 7.3. 最终输出
 ![avatar](images/7_Diffuse1.png)
